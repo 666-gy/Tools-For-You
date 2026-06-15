@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的工具箱 - 精选好用软件与网站</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 动态背景画布 -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="brand-icon">🧰</span>
+            <span class="brand-text">我的工具箱</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home" class="nav-link active">首页</a>
+            <a href="#tools" class="nav-link">工具</a>
+            <a href="#websites" class="nav-link">网站</a>
+            <a href="#about" class="nav-link">关于</a>
+        </div>
+        <button class="theme-toggle" id="themeToggle" title="切换主题">
+            <span class="theme-icon">🌙</span>
+        </button>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">发现</span>
+                <span class="title-line highlight">好用的工具</span>
+            </h1>
+            <p class="hero-subtitle">
+                    从终端到 Agent，这些工具陪我走过了一年——现在分享给你
+                </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="toolCount">0</span>
+                    <span class="stat-label">精选工具</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="siteCount">0</span>
+                    <span class="stat-label">实用网站</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1</span>
+                    <span class="stat-label">年学习</span>
+                </div>
+            </div>
+            <a href="#tools" class="cta-button">
+                <span>开始探索</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+            </a>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-cards">
+                <div class="float-card" style="--delay: 0s; --x: -20px; --y: -30px;">
+                    <span class="card-icon">⚡</span>
+                    <span class="card-text">效率</span>
+                </div>
+                <div class="float-card" style="--delay: 0.5s; --x: 30px; --y: 20px;">
+                    <span class="card-icon">🎨</span>
+                    <span class="card-text">设计</span>
+                </div>
+                <div class="float-card" style="--delay: 1s; --x: -10px; --y: 40px;">
+                    <span class="card-icon">💻</span>
+                    <span class="card-text">开发</span>
+                </div>
+                <div class="float-card" style="--delay: 1.5s; --x: 20px; --y: -20px;">
+                    <span class="card-icon">📚</span>
+                    <span class="card-text">学习</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 筛选标签 -->
+    <section class="filter-section">
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="dev">开发工具</button>
+            <button class="filter-btn" data-filter="design">设计创意</button>
+            <button class="filter-btn" data-filter="productivity">效率办公</button>
+            <button class="filter-btn" data-filter="learning">学习资源</button>
+            <button class="filter-btn" data-filter="github">其他GitHub项目</button>
+        </div>
+        <div class="search-box">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M21 21l-4.35-4.35"/>
+            </svg>
+            <input type="text" id="searchInput" placeholder="搜索工具或网站...">
+        </div>
+    </section>
+
+    <!-- 工具展示区域 -->
+    <section id="tools" class="tools-section">
+        <div class="section-header">
+            <h2 class="section-title">软件工具</h2>
+            <p class="section-desc">提升效率的桌面应用</p>
+        </div>
+        <div class="tools-grid" id="toolsGrid">
+            <!-- 工具卡片将通过 JS 动态生成 -->
+        </div>
+    </section>
+
+    <!-- 网站展示区域 -->
+    <section id="websites" class="websites-section">
+        <div class="section-header">
+            <h2 class="section-title">实用网站</h2>
+            <p class="section-desc">在线服务与资源</p>
+        </div>
+        <div class="tools-grid" id="websitesGrid">
+            <!-- 网站卡片将通过 JS 动态生成 -->
+        </div>
+    </section>
+
+    <!-- GitHub项目展示区域 -->
+    <section id="github" class="github-section">
+        <div class="section-header">
+            <h2 class="section-title">其他GitHub项目</h2>
+            <p class="section-desc">值得关注的开源项目</p>
+        </div>
+        <div class="tools-grid" id="githubGrid">
+            <!-- GitHub项目卡片将通过 JS 动态生成 -->
+        </div>
+    </section>
+
+    <!-- 关于区域 -->
+    <section id="about" class="about-section">
+        <div class="about-card">
+            <div class="about-avatar">👨‍💻</div>
+            <h3 class="about-title">关于这个网站</h3>
+            <p class="about-text">
+                学计算机一年了，在这个过程中发现了很多好用的工具和网站。它们帮助我提高学习效率、完成项目开发、发现设计灵感。
+                我想把这些宝藏资源整理出来，分享给同样在学习路上的你。
+            </p>
+            <div class="about-tags">
+                <span class="about-tag">计算机学习</span>
+                <span class="about-tag">工具分享</span>
+                <span class="about-tag">效率提升</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="brand-icon">🧰</span>
+                <span>我的工具箱</span>
+            </div>
+            <p class="footer-text">用 ❤️ 整理 | 持续更新中</p>
+            <p class="footer-year">2026</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" title="回到顶部">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5"/>
+            <path d="M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
